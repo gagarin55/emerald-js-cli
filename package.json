@@ -1,0 +1,24 @@
+{
+  "name": "emerald-js-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gagarin55/emerald-js-cli.git"
+  },
+  "author": "gagarin55",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gagarin55/emerald-js-cli/issues"
+  },
+  "homepage": "https://github.com/gagarin55/emerald-js-cli#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "emerald-js": "git+https://github.com/gagarin55/emerald-js.git#ethrpc",
+    "vorpal": "^1.12.0"
+  }
+}
