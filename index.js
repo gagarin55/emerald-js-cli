@@ -8,8 +8,9 @@ const { JsonRpc, EthRpc, HttpTransport, NodeChecker } = require('emerald-js');
 var url = 'https://mewapi.epool.io';
 var gastracker = 'https://api.gastracker.io/web3';
 var infura = 'https://mainnet.infura.io';
+var local = 'http://localhost:8545';
 
-var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(infura)));
+var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(local)));
 var checker = new NodeChecker(ethRpc);
 
 function chainHandler(self) {
