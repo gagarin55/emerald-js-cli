@@ -9,8 +9,9 @@ var url = 'https://mewapi.epool.io';
 var gastracker = 'https://api.gastracker.io/web3';
 var infura = 'https://mainnet.infura.io';
 var local = 'http://localhost:8545';
+var gastrackerMorden = 'https://web3.gastracker.io/morden';
 
-var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(local)));
+var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(gastrackerMorden)));
 var checker = new NodeChecker(ethRpc);
 
 function chainHandler(self) {
@@ -61,6 +62,25 @@ vorpal.command('eth_getBalance <address>', 'Returns the balance of the account o
         return handlers.eth_getBalance(this, args, ethRpc);
     });
 
+vorpal.command('eth_getBlockByNumber <blockNumber>', 'Returns information about a block by block number')
+    .types({ string: ['_']})
+    .action(function(args, callback) {
+        return handlers.eth_getBlockByNumber(this, args, ethRpc);
+    });
+
+vorpal.command('eth_getTransactionByHash <hash>', 'Returns the information about a transaction requested by transaction hash')
+    .types({ string: ['_']})
+    .action(function(args, callback) {
+       return handlers.eth_getTransactionByHash(this, args, ethRpc);
+    });
+
+vorpal.command('eth_getTransactionReceipt <hash>', 'Returns the receipt of a transaction by transaction hash')
+    .types({ string: ['_']})
+    .action(function(args, callback) {
+        return handlers.eth_getTransactionReceipt(this, args, ethRpc);
+    });
+
+
 vorpal.command('eth_getTransactionCount <address> [blockNumber]', 'Returns the number of transactions sent from an address')
     .types({ string: ['_'] })
     .action(function (args, callback) {
@@ -70,6 +90,11 @@ vorpal.command('eth_getTransactionCount <address> [blockNumber]', 'Returns the n
 vorpal.command('eth_syncing', 'Returns an object with data about the sync status or false')
     .action(function (args, callback) {
        return handlers.eth_syncing(this, ethRpc);
+    });
+
+vorpal.command('eth_gasPrice', 'Returns the current price per gas in wei')
+    .action(function (args, callback) {
+        return handlers.eth_gasPrice(this, ethRpc);
     });
 
 vorpal
