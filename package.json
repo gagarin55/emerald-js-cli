@@ -18,7 +18,7 @@
   "homepage": "https://github.com/gagarin55/emerald-js-cli#readme",
   "dependencies": {
     "chalk": "^2.1.0",
-    "emerald-js": "git+https://github.com/ethereumproject/emerald-js.git#v0.0.8",
+    "emerald-js": "git+https://github.com/gagarin55/emerald-js.git#show-hidden-acc",
     "vorpal": "^1.12.0"
   }
 }
