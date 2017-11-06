@@ -19,6 +19,11 @@ vorpal.command('listAccounts [chain]', 'Return the list of all accounts from the
         return handlers.listAccounts(this, args, vault);
     });
 
+vorpal.command('exportAccount <address> [chain]', 'Returns an account keyfile associated with the account')
+    .types({ string: ['_'] })
+    .action(function (args, callback) {
+        return handlers.exportAccount(this, args, vault);
+    });
 
 vorpal
     .delimiter('emerald-vault#')
