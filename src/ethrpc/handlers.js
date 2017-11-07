@@ -9,9 +9,15 @@ function ethGetBalanceHandler(vorpal, args, ethRpc) {
 }
 
 function ethGetBlockByNumberHandler(vorpal, args, ethRpc) {
-    return ethRpc.eth.getBlockByNumber(args.blockNumber)
+    return ethRpc.eth.getBlockByNumber(args.blockNumber, args.full)
         .then(block => vorpal.log(block))
         .catch (error => vorpal.log(error.message));
+}
+
+function ethBlockNumberHandler(vorpal, args, ethRpc) {
+    return ethRpc.eth.blockNumber()
+        .then(block => vorpal.log(block))
+        .catch(error => vorpal.log(error.message));
 }
 
 function ethGetTransactionByHashHandler(vorpal, args, ethRpc) {
@@ -23,7 +29,7 @@ function ethGetTransactionByHashHandler(vorpal, args, ethRpc) {
 function ethGetTransactionReceiptHandler(vorpal, args, ethRpc) {
     return ethRpc.eth.getTransactionReceipt(args.hash)
         .then(tx => vorpal.log(tx))
-.catch (error => vorpal.log(error.message));
+        .catch (error => vorpal.log(error.message));
 }
 
 function ethSyncingHandler(vorpal, ethRpc) {
@@ -35,7 +41,7 @@ function ethSyncingHandler(vorpal, ethRpc) {
 function ethGasPriceHandler(vorpal, ethRpc) {
     return ethRpc.eth.gasPrice().then((result) => {
         vorpal.log(result);
-});
+    });
 }
 
 
@@ -81,4 +87,5 @@ module.exports = {
     eth_getTransactionReceipt: ethGetTransactionReceiptHandler,
     net_peerCount: netPeerCountHandler,
     net_version: netVersionHandler,
+    eth_blockNumber: ethBlockNumberHandler,
 };

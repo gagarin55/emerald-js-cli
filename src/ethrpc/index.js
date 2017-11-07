@@ -11,7 +11,7 @@ var infura = 'https://mainnet.infura.io';
 var local = 'http://localhost:8545';
 var gastrackerMorden = 'https://web3.gastracker.io/morden';
 
-var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(gastrackerMorden)));
+var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(url)));
 var checker = new NodeChecker(ethRpc);
 
 function chainHandler(self) {
@@ -62,7 +62,13 @@ vorpal.command('eth_getBalance <address>', 'Returns the balance of the account o
         return handlers.eth_getBalance(this, args, ethRpc);
     });
 
-vorpal.command('eth_getBlockByNumber <blockNumber>', 'Returns information about a block by block number')
+vorpal.command('eth_blockNumber', 'Returns the number of most recent block')
+    .types({ string: ['_']})
+    .action(function(args, callback) {
+        return handlers.eth_blockNumber(this, args, ethRpc);
+    });
+
+vorpal.command('eth_getBlockByNumber <blockNumber> [full]', 'Returns information about a block by block number')
     .types({ string: ['_']})
     .action(function(args, callback) {
         return handlers.eth_getBlockByNumber(this, args, ethRpc);
