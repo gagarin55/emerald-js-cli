@@ -11,7 +11,7 @@ var infura = 'https://mainnet.infura.io';
 var local = 'http://localhost:8545';
 var gastrackerMorden = 'https://web3.gastracker.io/morden';
 
-var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(url)));
+var ethRpc = new EthRpc(new JsonRpc(new HttpTransport(gastrackerMorden)));
 var checker = new NodeChecker(ethRpc);
 
 function chainHandler(self) {
