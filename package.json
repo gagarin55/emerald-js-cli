@@ -18,7 +18,7 @@
   "homepage": "https://github.com/gagarin55/emerald-js-cli#readme",
   "dependencies": {
     "chalk": "^2.1.0",
-    "emerald-js": "git+https://github.com/gagarin55/emerald-js.git#mnemonic",
+    "emerald-js": "git+https://github.com/gagarin55/emerald-js.git#bip32",
     "vorpal": "^1.12.0"
   }
 }

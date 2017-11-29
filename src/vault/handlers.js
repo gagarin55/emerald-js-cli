@@ -22,7 +22,7 @@ function exportAccountHandler(vorpal, args, vault) {
 }
 
 function importMnemonicHandler(vorpal, args, vault) {
-    return vault.importMnemonic(args.passphrase, '', '', args.mnemonic, args.chain)
+    return vault.importMnemonic(args.passphrase, '', '', args.mnemonic, args.hdpath, args.chain)
         .then(result => vorpal.log(result))
         .catch (error => vorpal.log(error.message));
 }

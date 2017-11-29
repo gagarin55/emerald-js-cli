@@ -25,7 +25,7 @@ vorpal.command('exportAccount <address> [chain]', 'Returns an account keyfile as
         return handlers.exportAccount(this, args, vault);
     });
 
-vorpal.command('importMnemonic <mnemonic> <passphrase> [chain]', '')
+vorpal.command('importMnemonic <mnemonic> <hdpath> <passphrase> [chain]', '')
     .types({ string: ['_'] })
     .action(function (args, callback) {
         return handlers.importMnemonic(this, args, vault);
